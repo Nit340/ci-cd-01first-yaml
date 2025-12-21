@@ -1,4 +1,4 @@
-name: Day 2 - First Pipeline
+name: Day 3 - Python CI
 
 on:
   push:
@@ -6,18 +6,20 @@ on:
       - main
 
 jobs:
-  hello-job:
+  test-job:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Print message
-        run: echo "Day 2 completed successfully"
+      - name: Checkout code
+        uses: actions/checkout@v4
 
-      - name: Show current directory
-        run: pwd
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
 
-      - name: List files
-        run: ls -la
-      - name: Show date
-        run: date
+      - name: Install test tool
+        run: pip install pytest
 
+      - name: Run tests
+        run: pytest
