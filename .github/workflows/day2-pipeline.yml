@@ -11,10 +11,13 @@ jobs:
 
     steps:
       - name: Print message
-        run: echo "Hello nit, your pipeline is working!"
+        run: echo "Day 2 completed successfully"
 
       - name: Show current directory
         run: pwd
 
       - name: List files
         run: ls -la
+      - name: Show date
+        run: date
+
