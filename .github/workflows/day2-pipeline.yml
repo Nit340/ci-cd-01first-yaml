@@ -1,32 +1,20 @@
-name: Day 3 - Python CI
+name: Day 5 - Deploy to GitHub Pages
 
 on:
   push:
     branches:
       - main
-      
-env:
-  USERNAME: ${{ secrets.MY_NAME }}
 
 jobs:
-  test-job:
+  deploy:
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Setup Python
-        uses: actions/setup-python@v5
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
         with:
-          python-version: '3.10'
-
-      - name: Install test tool
-        run: pip install pytest
-
-      - name: Run tests
-        run: pytest
-
-      - name: Use secret
-        run: echo "Hello ${{ secrets.MY_NAME }}"
-
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: .
