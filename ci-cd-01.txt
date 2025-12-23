@@ -1,0 +1,23 @@
+name: Day 2 - First Pipeline
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  hello-job:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Print message
+        run: echo "Day 2 completed successfully"
+
+      - name: Show current directory
+        run: pwd
+
+      - name: List files
+        run: ls -la
+      - name: Show date
+        run: date
+
